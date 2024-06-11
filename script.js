@@ -27,33 +27,36 @@ let computerScore = 0;
 
 // Compare the choice from the computer and from the human, who wins the round.
 function playRound(humanChoice, computerChoice) {
-    if (humanChoice === "rock" && computerChoice === "scissors") {
+    if (humanChoice.toLowerCase() === "rock" && computerChoice === "scissors") {
         console.log("You win! Rock beats scissors.");
         humanScore ++;
     }
-    else if (humanChoice === "scissors" && computerChoice === "paper") {
+    else if (humanChoice.toLowerCase() === "scissors" && computerChoice === "paper") {
         console.log("You win! Scissors beats paper.");
         humanScore ++;
     }
-    else if (humanChoice === "paper" && computerChoice === "rock") {
+    else if (humanChoice.toLowerCase() === "paper" && computerChoice === "rock") {
         console.log("You win! Paper beats rock.");
         humanScore ++;
     }
-    else if (humanChoice === "rock" && computerChoice === "paper") {
+    else if (humanChoice.toLowerCase() === "rock" && computerChoice === "paper") {
         console.log("You lost! Paper beats rock.");
         computerScore ++;
     }
-    else if (humanChoice === "paper" && computerChoice === "scissors") {
+    else if (humanChoice.toLowerCase() === "paper" && computerChoice === "scissors") {
         console.log("You lost! Scissors beats paper.");
         computerScore ++;
     }
-    else if (humanChoice === "rock" && computerChoice === "paper") {
+    else if (humanChoice.toLowerCase() === "rock" && computerChoice === "paper") {
         console.log("You lost! Paper beats rock.");
         computerScore ++;
     }
-    else {
-        console.log("It's a tie.")
+    else if (humanChoice.toLowerCase() ===computerChoice) {
+        console.log("It's a tie! You both picked the same one.")
     }
+    else {
+        console.log("Invalid choice.")
+    } 
 }
 
 // Play 5 rounds and declare the winner:
