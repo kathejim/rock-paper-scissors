@@ -10,20 +10,11 @@ function getComputerChoice() {
 }
 
 const buttons = document.querySelector(".buttons");
+const buttonElement = document.querySelectorAll(".buttons button");
 const roundResult = document.querySelector("#roundResult");
 const gameResult = document.querySelector("#gameResult");
 const humanScoreText = document.querySelector(".human-score .points");
 const computerScoreText = document.querySelector(".computer-score .points");
-
-// Create a function to reset the game.
-function resetGame() {
-    humanScore = 0;
-    computerScore = 0;
-    humanScoreText.textContent = "0";
-    computerScoreText.textContent = "0";
-    roundResult.textContent = "";
-    gameResult.textContent = "";
-}
 
 
 // Play 5 rounds and reset the game.
@@ -32,15 +23,6 @@ function playGame(buttonClicked) {
     let computerChoice = getComputerChoice();
     playRound (humanChoice, computerChoice);
     humanChoice = "";
-    
-    if (humanScore === 5) {
-        gameResult.textContent = "YOU'RE THE ABSOLUTE WINNER!!!";
-        setTimeout(resetGame, 3000);
-    }
-    else if (computerScore === 5) {
-        gameResult.textContent = "COMPUTER WON! BEST LUCK NEXT TIME!";
-        setTimeout(resetGame, 3000);
-    }
 }
         
 
@@ -67,8 +49,37 @@ function playRound(humanChoice, computerChoice) {
             roundResult.textContent = `You lost the round, ${computerChoice} beats ${humanChoice}!`;
             computerScore ++;
             computerScoreText.textContent = computerScore;
+    }  
+
+    if (humanScore === 5) {
+        gameResult.textContent = "YOU'RE THE ABSOLUTE WINNER!!!";
+        disableButtons();
+        setTimeout(resetGame, 2500);
     }
-}
+    else if (computerScore === 5) {
+        gameResult.textContent = "COMPUTER WON! BEST LUCK NEXT TIME!";
+        disableButtons();
+        setTimeout(resetGame, 2500);
+    }
+};
 
 
+function disableButtons() {
+    buttonElement.forEach(button => button.disabled = true);
+};
+
+function enableButtons() {
+    buttonElement.forEach(button => button.disabled = false);
+};
+
+// Create a function to reset the game.
+function resetGame() {
+    humanScore = 0;
+    computerScore = 0;
+    humanScoreText.textContent = "0";
+    computerScoreText.textContent = "0";
+    roundResult.textContent = "";
+    gameResult.textContent = "";
+    enableButtons();
+};
 
