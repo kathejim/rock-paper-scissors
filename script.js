@@ -12,8 +12,8 @@ function getComputerChoice() {
 const buttons = document.querySelector(".buttons");
 const roundResult = document.querySelector("#roundResult");
 const gameResult = document.querySelector("#gameResult");
-const humanScoreText = document.querySelector(".human-score #points");
-const computerScoreText = document.querySelector(".computer-score #points");
+const humanScoreText = document.querySelector(".human-score .points");
+const computerScoreText = document.querySelector(".computer-score .points");
 
 // Create a function to reset the game.
 function resetGame() {
@@ -26,7 +26,7 @@ function resetGame() {
 }
 
 
-// Get the human choice and play the round
+// Play 5 rounds and reset the game.
 function playGame(buttonClicked) {
     let humanChoice = buttonClicked.target.textContent.toLowerCase();
     let computerChoice = getComputerChoice();
@@ -35,11 +35,11 @@ function playGame(buttonClicked) {
     
     if (humanScore === 5) {
         gameResult.textContent = "YOU'RE THE ABSOLUTE WINNER!!!";
-        resetGame();
+        setTimeout(resetGame, 3000);
     }
     else if (computerScore === 5) {
         gameResult.textContent = "COMPUTER WON! BEST LUCK NEXT TIME!";
-        resetGame();
+        setTimeout(resetGame, 3000);
     }
 }
         

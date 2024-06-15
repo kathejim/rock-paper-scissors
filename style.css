@@ -10,12 +10,12 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
  }
 
-.container {
+.container-block {
     display: flex;
     flex-direction: column;
     text-align: center;
     margin: 60px auto;
-    gap: 50px;
+    gap: 20px;
 }
 
 h1 {
@@ -28,7 +28,41 @@ h1 {
 h2 {
     font-size: 18px;
     color: rgba(245, 245, 245, 0.671);
+    padding-left: 420px;
+    padding-top: 30px;
 }
+
+.container-flex {
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    margin: 20px 200px;
+    gap: 50px;
+}
+
+.scores {
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: space-around;
+    border-radius: 15px;
+    background-color: rgba(180, 247, 163, 0.767);
+    padding: 20px 40px;
+}
+
+.human-score,
+.computer-score {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+p {
+    font-size: 20px;
+    color: #1e581eb6;
+    font-weight: bold;
+}
+
 .buttons {
     display: flex;
     justify-content: center;
@@ -40,14 +74,21 @@ button {
     height: 120px;
     background-color: #ac0f0f;
     border-radius: 10px;
-    box-shadow: inset 10px 10px 20px #830808;
+    box-shadow: inset -10px -10px 20px #700808,
+                inset 10px 10px 20px #700808;
     font-size: 20px;
     font-weight: bolder;
     color: whitesmoke;
     border: none;
 }
 
-p {
-    font-size: 25px;
+#roundResult {
+    color: #380808;
+}
+
+#gameResult {
+    font-size: 45px;
     font-weight: bold;
+    color: #0e310eb6;
+    padding-top: 50px;
 }
