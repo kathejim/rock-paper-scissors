@@ -1,7 +1,7 @@
 * {
     margin : 0;
     padding: 0;
-    border: 1px solid red;
+    burder: 1px solid red;
 }   
  body {
     height: 100vh;
@@ -44,6 +44,7 @@ button {
     font-size: 20px;
     font-weight: bolder;
     color: whitesmoke;
+    border: none;
 }
 
 p {
