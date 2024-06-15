@@ -1,19 +1,10 @@
-// Get a random string from the computer (rock, paper or string)
-let computerChoice;
 let humanChoice = "";
 
+// Get a random string from the computer (rock, paper or string)
 function getComputerChoice() {
-    let randomNumber = Math.floor(Math.random() * 3); 
-
-    if (randomNumber === 0) {
-        return "rock";
-        }
-    if (randomNumber === 1) {
-        return "paper";
-    }
-    if (randomNumber === 2) {
-        return "scissors";
-    }
+    const choices = ["rock", "paper", "scissors"];
+    let randomNumber = Math.floor(Math.random() * choices.length); 
+    return choices[randomNumber];
 }
 const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
@@ -23,7 +14,8 @@ const result = document.querySelector("p");
 // Get the human choice
 function getHumanChoice(buttonClicked) {
     humanChoice = buttonClicked.target.textContent.toLowerCase();
-    playRound (humanChoice, getComputerChoice());
+    let computerChoice = getComputerChoice();
+    playRound (humanChoice, computerChoice);
     humanChoice = "";
 }
 
