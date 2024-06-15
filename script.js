@@ -51,18 +51,13 @@ function playRound(humanChoice, computerChoice) {
             computerScoreText.textContent = computerScore;
     }  
 
-    if (humanScore === 5) {
-        gameResult.textContent = "YOU'RE THE ABSOLUTE WINNER!!!";
+    if (humanScore === 5 || computerScore === 5) {
+        gameResult.textContent = humanScore === 5 ? "YOU'RE THE ABSOLUTE WINNER!!!" :
+        "COMPUTER WON! BEST LUCK NEXT TIME!";
         disableButtons();
         setTimeout(resetGame, 2500);
-    }
-    else if (computerScore === 5) {
-        gameResult.textContent = "COMPUTER WON! BEST LUCK NEXT TIME!";
-        disableButtons();
-        setTimeout(resetGame, 2500);
-    }
-};
-
+    };
+}
 
 function disableButtons() {
     buttonElement.forEach(button => button.disabled = true);
