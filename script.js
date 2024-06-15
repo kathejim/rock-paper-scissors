@@ -1,4 +1,6 @@
-let humanChoice = "";
+//Keep the score
+let humanScore = 0;
+let computerScore = 0;
 
 // Get a random string from the computer (rock, paper or string)
 function getComputerChoice() {
@@ -7,36 +9,64 @@ function getComputerChoice() {
     return choices[randomNumber];
 }
 
-const rockButton = document.querySelector("#rock");
-const paperButton = document.querySelector("#paper");
-const scissorsButton = document.querySelector("#scissors");
-const result = document.querySelector("p");
+const buttons = document.querySelector(".buttons");
+const roundResult = document.querySelector("#roundResult");
+const gameResult = document.querySelector("#gameResult");
+const humanScoreText = document.querySelector(".human-score #points");
+const computerScoreText = document.querySelector(".computer-score #points");
 
-// Get the human choice
-function getHumanChoice(buttonClicked) {
-    humanChoice = buttonClicked.target.textContent.toLowerCase();
+// Create a function to reset the game.
+function resetGame() {
+    humanScore = 0;
+    computerScore = 0;
+    humanScoreText.textContent = "0";
+    computerScoreText.textContent = "0";
+    roundResult.textContent = "";
+    gameResult.textContent = "";
+}
+
+
+// Get the human choice and play the round
+function playGame(buttonClicked) {
+    let humanChoice = buttonClicked.target.textContent.toLowerCase();
     let computerChoice = getComputerChoice();
     playRound (humanChoice, computerChoice);
     humanChoice = "";
+    
+    if (humanScore === 5) {
+        gameResult.textContent = "YOU'RE THE ABSOLUTE WINNER!!!";
+        resetGame();
+    }
+    else if (computerScore === 5) {
+        gameResult.textContent = "COMPUTER WON! BEST LUCK NEXT TIME!";
+        resetGame();
+    }
 }
+        
 
-rockButton.addEventListener("click", getHumanChoice);
-paperButton.addEventListener("click", getHumanChoice);
-scissorsButton.addEventListener("click", getHumanChoice);
+buttons.addEventListener("click", function(event) {
+    if (event.target.matches ("#rock, #paper, #scissors")) {
+        playGame(event);
+    }
+});
 
 // Compare the choice from the computer and from the human, who wins the round.
 function playRound(humanChoice, computerChoice) {
     switch (true) {
         case humanChoice === computerChoice:
-            result.textContent = "It's a tie! You both picked the same one.";
+            roundResult.textContent = "Nobody won the round! You both picked the same choice.";
             break;
         case (humanChoice === "rock" && computerChoice === "scissors") ||
              (humanChoice === "paper" && computerChoice === "rock") ||
              (humanChoice === "scissors" && computerChoice === "paper"):
-            result.textContent = `You win, ${humanChoice} beats ${computerChoice}!`;
+            roundResult.textContent = `You win the round, ${humanChoice} beats ${computerChoice}!`;
+            humanScore++;
+            humanScoreText.textContent = humanScore;
             break;
         default:
-            result.textContent = `You lost, ${computerChoice} beats ${humanChoice}!`;
+            roundResult.textContent = `You lost the round, ${computerChoice} beats ${humanChoice}!`;
+            computerScore ++;
+            computerScoreText.textContent = computerScore;
     }
 }
 
